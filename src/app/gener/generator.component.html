@@ -14,8 +14,13 @@
           maxlength="1">
       </div>
       <div class="col-3 pos-rel">
-        <img *ngIf="data.length === 0" class="pos-abs right-icon" src="../../assets/img/minimal-clock.jpg" alt="">
-        <img *ngIf="data.length > 0" (click)="getCurrentScore()" class="w-10 pos-abs right-icon" src="../../assets/img/minimal-clock.jpg" alt="">
+        <div class="flex" *ngIf="data.length === 0">
+          <img class="pos-abs right-icon" src="../../assets/img/minimal-clock.jpg" alt="clock-image">
+          <div class="warning-text">*To get points using the clock, start random grid</div>
+        </div>
+        <a *ngIf="data.length > 0" (click)="getCurrentScore()">
+          <img class="w-10 pos-abs right-icon" src="../../assets/img/minimal-clock.jpg" alt="clock-image">
+        </a>
       </div>
       <div class="col-3 pos-rel">
         <button [disabled]="generatorStarted" type="button" class="btn btn-secondary btn-sm text-caps pos-abs right" (click)="startGenerator()">Generate 2d grid</button>
@@ -34,8 +39,8 @@
         </table>
         <table class="table" *ngIf="data.length === 0">
           <tbody>
-            <tr *ngFor="let row of [1,2,3,4,5,6,7,8,9,10]; let i = index">
-              <ng-container *ngFor="let letter of [0,1,2,3,4,5,6,7,8,9,10]">
+            <tr *ngFor="let row of [1,2,3,4,5,6,7,8]; let i = index">
+              <ng-container *ngFor="let letter of [0,1,2,3,4,5,6,7,8]">
                 <td></td>
               </ng-container>
             </tr>

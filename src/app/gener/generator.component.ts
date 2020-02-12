@@ -17,9 +17,9 @@ export class GeneratorComponent implements OnInit {
   alphabet = 'abcdefghijklmnopqrstuvxyz';
   cols = [0,1,2,3,4,5,6,7];
   rows = [0,1,2,3,4,5,6,7];
-  weightedProbability = [];
-  numberOfGrid = 64;
+  numberOfGrid = this.cols.length * this.rows.length;
   generatorStarted: boolean;
+  generatorInterval: any;
 
 
   constructor(private scoreService: ScoreService) { }
@@ -31,6 +31,8 @@ export class GeneratorComponent implements OnInit {
 
   showLetter() {
     this.letterInserted = true;
+    this.generateRandomWord(this.letter);
+    this.generateIntervals();
 
     setTimeout(() => {
       this.letter = '';
@@ -41,10 +43,14 @@ export class GeneratorComponent implements OnInit {
   startGenerator(): void {
     this.generatorStarted = true;
     this.generateRandomWord(this.letter);
+    this.generateIntervals();
+    setTimeout(() => this.generatorStarted = false, 2000);
+  }
 
-    setInterval(() => {
+  generateIntervals(): void {
+    window.clearInterval(this.generatorInterval);
+    this.generatorInterval = setInterval(() => {
       this.generateRandomWord(this.letter);
-      console.log(this.letter);
       this.getCurrentScore();
     }, 2000);
   }
@@ -60,7 +66,9 @@ export class GeneratorComponent implements OnInit {
           if (probability <= 0.2) {
             row.push(value);
           } else {
-            const letterIndex = Math.floor(Math.random()  * this.alphabet.length);
+            let newAlphabet = this.alphabet.split('');
+            newAlphabet = newAlphabet.filter(l => l !== value);
+            const letterIndex = Math.floor(Math.random()  * newAlphabet.length);
             const letter = this.alphabet[letterIndex];
             row.push(letter);
           }
@@ -89,7 +97,6 @@ export class GeneratorComponent implements OnInit {
     const now = moment().format('ss');
 
     const positionInGrid = now.split('');
-    console.log(positionInGrid);
     positionInGrid.forEach(l => {
       const number = parseInt(l);
       position.push(number);
@@ -111,11 +118,8 @@ export class GeneratorComponent implements OnInit {
 
 
     const firstClockValue = this.data[first][second];
-    console.log(firstClockValue);
 
-    /// PROBLEMA RESIDE AQUI!!!
     const secondClockValue = this.data[third][forth];
-    console.log(secondClockValue);
     /// search in data array for occurences
     this.data.forEach(row => {
       row.filter(letter => {
@@ -124,12 +128,17 @@ export class GeneratorComponent implements OnInit {
           counterFirstValue++;
 
           if (counterFirstValue > 9 ) {
-            // multiplicado pelo valor mais baixo possivel que permita o valor
-            // ficar <= 9
-            const maxValue = 9;
-            const remainder = counterFirstValue - maxValue;
-
-            // counterFirstValue / x <= maxValue;
+            // multiplied by the smallest integer possible in order to have a value
+            // below 9
+            const array = [];
+            for (let i = 1; i < counterFirstValue; i++) {
+              const divisable = counterFirstValue / i;
+              if (divisable < 9) {
+                array.push(divisable);
+              }
+            }
+            counterFirstValue = Math.floor(Math.min.apply(Math, array));
+            console.log(counterFirstValue);
           }
         }
 
@@ -137,7 +146,15 @@ export class GeneratorComponent implements OnInit {
         if (letter === secondClockValue) {
           counterSecondValue++;
           if (counterSecondValue > 9) {
-
+            const array = [];
+            for (let i = 1; i < counterSecondValue; i++) {
+              const divisable = counterSecondValue / i;
+              if (divisable < 9) {
+                array.push(divisable);
+              }
+            }
+            counterSecondValue = Math.floor(Math.min.apply(Math, array));
+            console.log(counterSecondValue);
           }
         }
       });
