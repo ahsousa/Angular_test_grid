@@ -1,0 +1,54 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Roboto', sans-serif; font-size: 10px; }
+
+.app-boundary {
+  padding-top: 5%;
+}
+
+
+.w-10 {
+  width: 10%;
+}
+
+.w-40 {
+  width: 40%
+}
+
+.w-80 {
+  width: 80%
+}
+
+.text-align {
+  text-align: center;
+}
+
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-caps {
+  text-transform: uppercase;
+}
+
+.table {
+  width: 100%;
+  border: 1px solid #D0D4D4;
+}
+
+td,th, thead, tbody {
+  border: 1px solid #D0D4D4;
+}
+
+input::-webkit-input-placeholder {
+  font-size: 10px;
+}
+
+input::-moz-placeholder {
+  font-size: 10px;
+}
+
+

@@ -1,0 +1,50 @@
+<article class="app-boundary">
+  <!-- Button and automatic generator -->
+  <div class="container">
+    <div class="row">
+      <div class="col-3 offset-1 flex">
+        <label for="" class="text-caps">Character</label>
+        <input
+          type="text"
+          class="w-80 form-control"
+          [(ngModel)]="letter"
+          (ngModelChange)="showLetter()"
+          placeholder="Character"
+          [disabled] = "letterInserted"
+          maxlength="1">
+      </div>
+      <div class="col-3 pos-rel">
+        <img *ngIf="data.length === 0" class="pos-abs right-icon" src="../../assets/img/minimal-clock.jpg" alt="">
+        <img *ngIf="data.length > 0" (click)="getCurrentScore()" class="w-10 pos-abs right-icon" src="../../assets/img/minimal-clock.jpg" alt="">
+      </div>
+      <div class="col-3 pos-rel">
+        <button [disabled]="generatorStarted" type="button" class="btn btn-secondary btn-sm text-caps pos-abs right" (click)="startGenerator()">Generate 2d grid</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-9 offset-1">
+        <table class="table" *ngIf="data.length > 0">
+          <tbody>
+            <tr *ngFor="let row of data; let i = index">
+              <ng-container *ngFor="let letter of row">
+                <td>{{letter}}</td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+        <table class="table" *ngIf="data.length === 0">
+          <tbody>
+            <tr *ngFor="let row of [1,2,3,4,5,6,7,8,9,10]; let i = index">
+              <ng-container *ngFor="let letter of [0,1,2,3,4,5,6,7,8,9,10]">
+                <td></td>
+              </ng-container>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- code result -->
+    <app-score></app-score>
+  </div>
+</article>

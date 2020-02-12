@@ -1,0 +1,25 @@
+.flex-horizontal {
+  display: flex;
+  /* flex-direction: row; */
+}
+
+.row:nth-child(2) {
+  margin-top: 70px;
+  margin-bottom: 70px;
+}
+
+td {
+  height: 40px;
+}
+
+.input-field {
+  padding-left: 0;
+}
+
+.btn-props {
+  font-size: 10px;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 22px;
+  height: 39px;
+}

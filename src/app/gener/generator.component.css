@@ -1,0 +1,52 @@
+tr {
+  height: 40px !important;
+}
+
+td {
+  width: 37px !important;
+}
+
+img {
+  width: 40%;
+  max-width: 60px;
+}
+
+.row:nth-child(2) {
+  margin-top: 70px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.pos-rel {
+  position: relative;
+}
+
+.pos-abs {
+  position: absolute;
+}
+
+.right {
+  right: 6%;
+  font-size: 10px;
+  width: 60%;
+  padding: 10px 20px;
+  margin-top: 17px;
+}
+
+.right-icon {
+  right: 50%;
+}
+
+.text-caps {
+  text-transform: uppercase;
+}
+
+.result {
+  border: 1px solid #6c757d;
+  padding: 10px 40px;
+}
+
+

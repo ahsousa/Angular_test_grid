@@ -1,0 +1,63 @@
+<section>
+  <div class="container">
+    <!-- Score viewer -->
+
+    <app-score></app-score>
+
+
+    <!-- Form -->
+    <div class="row">
+      <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="flex-horizontal text-caps col-7 offset-2">
+        <div class="input-field flex col-4">
+          <label for="">Payment</label>
+          <input
+            formControlName="paymentField"
+            class="form-control"
+            type="text"
+            placeholder="Payment">
+        </div>
+        <div class="input-field flex col-4">
+          <label for="">Amount</label>
+          <input
+            formControlName="amountField"
+            class="form-control"
+            type="text"
+            placeholder="Amount">
+        </div>
+        <div class="input-field col-4">
+          <button
+            type="submit"
+            [disabled]="!paymentForm.valid || !code"
+            class="btn btn-secondary btn-props text-caps">+ Add</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Payment list -->
+    <div class="row">
+      <div class="col-9 offset-2">
+        <table class="table">
+          <thead class="text-caps">
+            <th *ngFor="let title of header; let i = index" [ngClass]="'payment-col-'+(i + 1)">{{title}}</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let payment of payments; let i = index">
+              <ng-container *ngIf="payments.length > 0">
+                <td>{{payment.name}}</td>
+                <td>{{payment.amount}}</td>
+                <td>{{payment.code}}</td>
+                <td>{{payment.grid}}</td>
+              </ng-container>
+            </tr>
+            <tr *ngFor="let line of lines">
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

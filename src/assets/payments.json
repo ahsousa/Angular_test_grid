@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "payment 1",
+    "amount": 1000,
+    "code": "65",
+    "grid": 64
+  },
+  {
+    "id": 2,
+    "name": "payment 2",
+    "amount": 2000,
+    "code": "55",
+    "grid": 64
+  },
+  {
+    "id": 3,
+    "name": "payment 3",
+    "amount": 6000,
+    "code": "93",
+    "grid": 64
+  }
+]
