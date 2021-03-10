@@ -24,7 +24,7 @@
     "@angular/router": "^7.2.16",
     "bootstrap": "^4.4.1",
     "core-js": "^2.5.4",
-    "elliptic": "^6.6.1",
+    "elliptic": "^6.5.4",
     "http-proxy": "^1.18.1",
     "jquery": "^3.4.1",
     "minimist": "^0.2.1",
