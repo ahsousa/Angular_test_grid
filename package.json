@@ -28,7 +28,7 @@
     "http-proxy": "^1.18.1",
     "jquery": "^3.4.1",
     "minimist": "^0.2.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "node-forge": "^0.10.0",
     "rxjs": "~6.5.4",
     "serialize-javascript": "^5.0.1",
